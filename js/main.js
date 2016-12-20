@@ -66,24 +66,15 @@ function validateForm(){
 		return false;
 	}
 
-	//select
-	var indice = document.getElementsByTagName('select').value;
-	var indicePadre = document.getElementById('select').parentNode;
-	var indiceError= document.createElement('span');
-	/*if( select == null || select == 0 ) {
-		notie.alert(3, "Debes seleccionar una bicicleta", 2.5);
-  		return false;*/
-  	for (var i = 0; i < indice.length; ++i){ 
-			if(indice[i].value === "0"){
-				var textError = document.createTextNode("Debes seleccionar una bicicleta");
-				indiceError.appendChild(textError);
-				indicePadre.appendChild(indiceError);
-				return false;
-  		}
-  	}
-  	//checkbox
-  	var elemento = document.getElementsByTagName('input[type="checkbox"]');
-	if( !elemento.checked ) {
-  		return false;
-	}
+	var indice = document.getElementsByTagName('select')[0].selectedIndex;
+		if( indice == null || indice == 0 ) {
+			//alert("No haz seleccionado una opción, favor escoge")
+			var lista = document.getElementsByClassName('form-group input-box')[1].classList.add('indice')
+			var indicePadre = document.getElementsByClassName('indice')[0];
+			var indiceError = document.createElement('span');
+			var textError = document.createTextNode("Debes seleccionar una bicicleta");
+			indiceError.appendChild(textError);
+			indicePadre.appendChild(indiceError);
+			return false;
+		}
 }
